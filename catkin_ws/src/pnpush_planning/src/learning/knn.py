@@ -75,7 +75,9 @@ def knn(inputfile, k):
         
         error_vxy += norm((np.array(y_test_predict) - np.array(y_test))[:,3:5].flatten(1)) / n_test
         error_vangle += norm((np.array(y_test_predict) - np.array(y_test))[:,5].flatten(1)) / n_test
-            
+    
+    print error_xy, error_angle
+
     error_xy /= n_cross
     error_angle /= n_cross
 
@@ -98,8 +100,12 @@ def knn(inputfile, k):
     # print 'std_vxy', std_vxy, 'std_vangle', std_vangle
     # print 'error_vxy_percent %.2f%% ' % (error_vxy/std_vxy*100), 'error_vangle_percent %.2f %%' % (error_vangle/std_vangle*100)
 
-    print '%d & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f\\\\ \hline' % (k, error_xy*(10**6), error_angle*(10**5), error_xy/std_xy*100, error_angle/std_angle*100,
-           error_vxy*(10**6), error_vangle*(10**5), error_vxy/std_vxy*100, error_vangle/std_vangle*100)
+    print n_cross, n_data, n_perseg, error_xy, error_angle
+    print n_data,  np.array(data)[0,0:4],  np.array(data)[0,6:9], 
+    print error_vangle, std_vangle
+
+    # print '%d & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f & %.2f\\\\ \hline' % (k, error_xy*(10**6), error_angle*(10**5), error_xy/std_xy*100, error_angle/std_angle*100,
+    #        error_vxy*(10**6), error_vangle*(10**5), error_vxy/std_vxy*100, error_vangle/std_vangle*100)
     
 def main(argv):
     for k in range(1,10,2):

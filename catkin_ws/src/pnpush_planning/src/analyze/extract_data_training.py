@@ -7,24 +7,28 @@ import numpy as np
 import json
 
 import matplotlib
-import matplotlib.patches as mpatches
-import matplotlib.pyplot as plt
-from matplotlib.collections import PatchCollection
+# import matplotlib.patches as mpatches
+# import matplotlib.pyplot as plt
+# from matplotlib.collections import PatchCollection
 
-from config.shape_db import ShapeDB
+# from config.shape_db import ShapeDB
 
 import tf.transformations as tfm
 from ik.helper import *
 from config.helper import *
-from matplotlib.pyplot import savefig
+# from matplotlib.pyplot import savefig
 import time
 
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D
 
 import pdb
 def extract2d_and_cleanup(data):
-    tip_pose = data['tip_poses']
+
+    # print "data: ", data
+    tip_pose = data['tip_pose']
     object_pose = data['object_pose']
+
+    print "obj pose: ", object_pose[0]
     ft = data['ft_wrench']
     
     # transformation to the first 
@@ -269,6 +273,8 @@ def json2trainingdata(filepath):
 def main(argv):
     import glob
     filelist = glob.glob("%s/motion*.json" % argv[1])
+
+    print 'filelist[0]: ', filelist[0]
     all_training_data = []
     
     for json_filepath in filelist:

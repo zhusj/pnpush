@@ -1,6 +1,6 @@
 
 import rospy
-import chan    # python channel https://chan.readthedocs.org/en/latest/
+# import chan    # python channel https://chan.readthedocs.org/en/latest/
 import geometry_msgs.msg
 import tf.transformations as tfm
 import tf
